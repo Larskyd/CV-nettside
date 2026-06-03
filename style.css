@@ -86,6 +86,9 @@ nav {
   display: flex;
   gap: 2rem;
   list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-links a {
@@ -118,6 +121,23 @@ nav {
   width: 100%;
 }
 
+/* ─── Language Toggle ─── */
+.lang-toggle {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem 0;
+  letter-spacing: 0.05em;
+  transition: color var(--transition);
+}
+
+.lang-toggle:hover {
+  color: var(--accent);
+}
 
 /* ─── Hero Section ─── */
 .hero {
@@ -1101,7 +1121,90 @@ footer span {
   transform: scale(1.2);
 }
 
+/* ─── Dark Mode ─── */
+[data-theme="dark"] {
+  --bg:             #0f0f0f;
+  --surface:        #1a1a1a;
+  --surface-alt:    #222222;
+  --border:         #2e2e2e;
+  --text-primary:   #f0ede8;
+  --text-secondary: #a0998f;
+  --text-muted:     #605a54;
+  --accent:         #4a7ab5;
+  --accent-light:   #5a8ac5;
+  --accent-warm:    #c49a4a;
+  --tag-bg:         #1e2a38;
+  --tag-text:       #7aacdf;
+}
 
+[data-theme="dark"] nav {
+  background: rgba(15, 15, 15, 0.92);
+}
+
+[data-theme="dark"] footer {
+  background: #000;
+}
+
+/* Toggle switch */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem 0;
+  letter-spacing: 0.05em;
+  transition: color var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+}
+.theme-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.theme-toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background var(--transition);
+  border: 1px solid var(--border);
+}
+
+.theme-toggle input:checked + .theme-toggle-track {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition);
+  pointer-events: none;
+}
+
+.theme-toggle input:checked ~ .theme-toggle-thumb {
+  transform: translateX(18px);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
 
 

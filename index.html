@@ -25,7 +25,11 @@
       <li><a href="#ferdigheter">Ferdigheter</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
-  </nav>
+    <div class="nav-controls">
+    <!--<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">DARK</button>-->
+    <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">EN</button>
+  </div>
+</nav>
 
   <!-- ─── Hero  ─── -->
   <section id="topp" class="hero">
@@ -33,9 +37,8 @@
       <div class="hero-eyebrow">Student</div>
       <h1 class="hero-name">Lars<br /><span>Kydland</span></h1>
       <p class="hero-title">Bachelor i IT og Informasjonssystemer</p>
-      <p class="hero-bio">
-        En ivrig IT-student som har teoretisk kunnskap innen systemutvikling og IT-struktur.
-        Som synes det er spennende å bruke nye teknologier til å løse problemer.
+      <p class="hero-bio" id="heroBio">
+        En ivrig IT-student som har teoretisk kunnskap innen systemutvikling og IT-struktur. Som synes det er spennende å bruke nye teknologier til å løse problemer.
       </p>
       <div class="hero-cta">
         <a href="#prosjekter" class="btn-primary">Se prosjekter →</a>
@@ -94,10 +97,7 @@
 
       <div class="education-details">
         <p class="education-intro">
-          Bachelorgraden kombinerer teknologi, systemutvikling og forretningsforståelse med fokus på
-          hvordan digitale løsninger kan skape verdi for organisasjoner og brukere. Gjennom studiet
-          har jeg opparbeidet både teoretisk kunnskap og praktisk erfaring gjennom prosjektarbeid og
-          utvikling av IT-løsninger.
+          Bachelorgraden kombinerer teknologi, systemutvikling og forretningsforståelse med fokus på hvordan digitale løsninger kan skape verdi for organisasjoner og brukere. Gjennom studiet har jeg opparbeidet både teoretisk kunnskap og praktisk erfaring gjennom prosjektarbeid og utvikling av IT-løsninger.
         </p>
 
         <div class="skills-section-title">Faglig innhold og kompetanse</div>
@@ -131,8 +131,7 @@
     <span class="project-tag">Bachelorprosjekt</span>
     <h3>Reviver – Sorteringsapp</h3>
     <p>
-      Utviklet en mobilapplikasjon med maskinlæring for å hjelpe brukere med riktig avfallssortering.
-      Prosjektet inkluderte backend, API-er, autentisering og fokus på brukervennlighet.
+      Utviklet en mobilapplikasjon med maskinlæring for å hjelpe brukere med riktig avfallssortering. Prosjektet inkluderte backend, API-er, autentisering og fokus på brukervennlighet.
     </p>
     <div class="project-tech">
       <span class="skill-pill">Kotlin</span>
@@ -146,8 +145,7 @@
     <span class="project-tag">Skoleprosjekt</span>
     <h3>Kartverket - Rappoterings nettside</h3>
     <p>
-      Webapplikasjon for innmelding og behandling av kartfeil, utviklet med fokus på databaser,
-      MVC-struktur og sikker håndtering av brukerdata.
+      Webapplikasjon for innmelding og behandling av kartfeil, utviklet med fokus på databaser, MVC-struktur og sikker håndtering av brukerdata.
     </p>
     <div class="project-tech">
        <span class="skill-pill">C#</span>
@@ -161,8 +159,7 @@
     <span class="project-tag">  <p>Personlig prosjekt</p></span>
     <h3>Personlig CV-nettside</h3>
     <p>
-      En personlig nettside bygget for å presentere utdanning, ferdigheter, prosjekter og kontaktinformasjon
-      på en ryddig og moderne måte.
+      En personlig nettside bygget for å presentere utdanning, ferdigheter, prosjekter og kontaktinformasjon på en ryddig og moderne måte.
     </p>
     <div class="project-tech">
        <span class="skill-pill">HTML</span>
@@ -353,6 +350,121 @@
 
     sections.forEach(s => navObserver.observe(s));
   </script>
+
+  <script>
+  let isEnglish = false;
+
+  const translations = {
+    // Nav
+    'Utdanning': 'Education',
+    'Prosjekter': 'Projects',
+    'Ferdigheter': 'Skills',
+    'Kontakt': 'Contact',
+
+    // Hero
+    'Student': 'Student',
+    'Bachelor i IT og Informasjonssystemer': 'Bachelor in IT and Information Systems',
+    'En ivrig IT-student som har teoretisk kunnskap innen systemutvikling og IT-struktur. Som synes det er spennende å bruke nye teknologier til å løse problemer.':
+    'An eager IT student with theoretical knowledge in system development and IT architecture, who enjoys using new technologies to solve problems.',
+    'Se prosjekter →': 'View projects →',
+    'Ta kontakt': 'Get in touch',
+
+    // Section titles
+    'Faglig innhold og kompetanse': 'Academic content and competencies',
+
+    // Education
+    'Bachelorgraden kombinerer teknologi, systemutvikling og forretningsforståelse med fokus på hvordan digitale løsninger kan skape verdi for organisasjoner og brukere. Gjennom studiet har jeg opparbeidet både teoretisk kunnskap og praktisk erfaring gjennom prosjektarbeid og utvikling av IT-løsninger.':
+      'The bachelor\'s degree combines technology, system development and business understanding with a focus on how digital solutions can create value for organisations and users. Throughout the programme I have built both theoretical knowledge and practical experience through project work and IT development.',
+    'Systemutvikling, programmering og databasedesign': 'System development, programming and database design',
+    'Informasjonssikkerhet og risikohåndtering': 'Information security and risk management',
+    'Algoritmer, KI og maskinlæring': 'Algorithms, AI and machine learning',
+    'Geografiske informasjonssystemer (GIS)': 'Geographic information systems (GIS)',
+    'Webutvikling, API-er og moderne utviklingsmetoder': 'Web development, APIs and modern development methods',
+    'Datakommunikasjon og operativsystemer': 'Data communication and operating systems',
+    'UX-design og brukervennlige løsninger': 'UX design and user-friendly solutions',
+    'Analyse og implementering av informasjonssystemer': 'Analysis and implementation of information systems',
+    'Prosjektarbeid og tverrfaglig samarbeid': 'Project work and interdisciplinary collaboration',
+    'Programmering i Java, C#, Python og Kotlin': 'Programming in Java, C#, Python and Kotlin',
+    'Fullført': 'Completed',
+
+    // Projects
+    'Bachelorprosjekt': 'Bachelor project',
+    'Skoleprosjekt': 'School project',
+    'Personlig prosjekt': 'Personal project',
+    'Reviver – Sorteringsapp': 'Reviver – Sorting App',
+    'Utviklet en mobilapplikasjon med maskinlæring for å hjelpe brukere med riktig avfallssortering. Prosjektet inkluderte backend, API-er, autentisering og fokus på brukervennlighet.':
+      'Developed a mobile application using machine learning to help users sort waste correctly. The project included backend, APIs, authentication and a focus on usability.',
+    'Kartverket - Rappoterings nettside': 'Kartverket – Reporting Website',
+    'Webapplikasjon for innmelding og behandling av kartfeil, utviklet med fokus på databaser, MVC-struktur og sikker håndtering av brukerdata.':
+      'Web application for submitting and handling map errors, developed with a focus on databases, MVC architecture and secure user data handling.',
+    'Personlig CV-nettside': 'Personal CV Website',
+    'En personlig nettside bygget for å presentere utdanning, ferdigheter, prosjekter og kontaktinformasjon på en ryddig og moderne måte.':
+      'A personal website built to present education, skills, projects and contact information in a clean and modern way.',
+
+    // Skills
+    'Programmering': 'Programming',
+    'Webutvikling & API': 'Web Development & API',
+    'Systemer & Data': 'Systems & Data',
+    'Sikkerhet': 'Security',
+    'Design & UX': 'Design & UX',
+    'Samarbeid & Metode': 'Collaboration & Methods',
+    'Databasedesign': 'Database Design',
+    'Algoritmer': 'Algorithms',
+    'Informasjonssikkerhet': 'Information Security',
+    'Risikohåndtering': 'Risk Management',
+    'Prototyping': 'Prototyping',
+    'Brukersentrert design': 'User-Centred Design',
+    'Prosjektarbeid': 'Project Work',
+    'Tverrfaglig samarbeid': 'Interdisciplinary Collaboration',
+    'Problemløsning': 'Problem Solving',
+
+    // Contact
+    'E-post': 'Email',
+
+    // Footer
+    'Bygget med HTML, CSS & JS': 'Built with HTML, CSS & JS',
+  };
+
+  // Build reverse map for EN -> NO
+  const reverseTranslations = Object.fromEntries(
+    Object.entries(translations).map(([no, en]) => [en, no])
+  );
+
+  function translateNode(node, map) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const trimmed = node.textContent.trim();
+      if (map[trimmed]) {
+        node.textContent = node.textContent.replace(trimmed, map[trimmed]);
+      }
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      node.childNodes.forEach(child => translateNode(child, map));
+    }
+  }
+
+  function toggleLanguage() {
+    const btn = document.getElementById('langBtn');
+    const map = isEnglish ? reverseTranslations : translations;
+    translateNode(document.body, map);
+    isEnglish = !isEnglish;
+    btn.textContent = isEnglish ? 'NO' : 'EN';
+    document.documentElement.lang = isEnglish ? 'en' : 'no';
+  }
+
+  function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = isDark ? 'DARK' : 'LIGHT';
+}
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  document.getElementById('themeBtn').textContent = 'LIGHT';
+}
+</script>
+
+
 
 </body>
 </html>

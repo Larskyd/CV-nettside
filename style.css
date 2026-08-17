@@ -500,6 +500,14 @@ section {
   align-items: start;
 }
 
+/* Space + divider between multiple stacked education entries
+   (e.g. Bachelor followed by Master) */
+.education-grid + .education-grid {
+  margin-top: 3.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--border);
+}
+
 .education-degree {
   background: var(--accent);
   color: #fff;
@@ -547,6 +555,15 @@ section {
   border-radius: 100px;
   font-size: 0.78rem;
   letter-spacing: 0.05em;
+}
+
+/* In-progress variant — used for degrees still being studied
+   (e.g. "Pågår" / "In progress") so it reads distinctly from
+   the completed "Fullført" badge */
+.degree-badge.in-progress {
+  background: rgba(181, 137, 58, 0.25);
+  color: #fde8c2;
+  border: 1px solid rgba(181, 137, 58, 0.5);
 }
 
 .education-intro {
@@ -1234,6 +1251,7 @@ footer span {
   .hero-visual           { display: none; }
   section                { padding: 60px 1.5rem; }
   .education-grid        { grid-template-columns: 1fr; }
+  .education-grid + .education-grid { margin-top: 2.5rem; padding-top: 2.5rem; }
   .education-degree      { position: static; }
   .skills-list           { grid-template-columns: 1fr; }
   .projects-grid         { grid-template-columns: 1fr; }
